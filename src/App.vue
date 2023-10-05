@@ -7,9 +7,11 @@
     <transition
       name="para"
       @before-enter="beforeEnter"
-      @before-leave="beforeLeave"
       @enter="enter"
       @after-enter="afterEnter"
+      @before-leave="beforeLeave"
+      @leave="leave"
+      @after-leave="afterLeave"
     >
       <p v-if="paraIsVisible">This is only sometimes visible</p>
     </transition>
@@ -53,6 +55,12 @@ export default {
     },
     beforeLeave() {
       console.log('beforeLeave');
+    },
+    leave() {
+      console.log('leave');
+    },
+    afterLeave() {
+      console.log('afterLeave');
     },
     animateBlock() {
       this.animatedBlock = true;
