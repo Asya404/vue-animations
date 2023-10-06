@@ -46,18 +46,39 @@ export default {
     beforeEnter(el) {
       console.log('beforeEnter');
       console.log(el);
+      el.style.opacity = 0;
     },
-    enter() {
+    enter(el, done) {
       console.log('enter');
+      let round = 1;
+      const interval = setInterval(function () {
+        el.style.opacity = round * 0.01;
+        round++;
+        if (round > 100) {
+          clearInterval(interval);
+          done();
+        }
+      }, 20);
     },
     afterEnter() {
       console.log('afterEnter');
     },
-    beforeLeave() {
+    beforeLeave(el) {
       console.log('beforeLeave');
+      el.style.opacity = 1;
     },
-    leave() {
+    leave(el, done) {
       console.log('leave');
+
+      let round = 1;
+      const interval = setInterval(function () {
+        el.style.opacity = 1 - round * 0.01;
+        round++;
+        if (round > 100) {
+          clearInterval(interval);
+          done();
+        }
+      }, 20);
     },
     afterLeave() {
       console.log('afterLeave');
@@ -131,7 +152,7 @@ button:active {
   animation: slide-scale 0.3s ease-out forwards;
 }
 
-.para-enter-from {
+/* .para-enter-from {
   opacity: 0;
   transform: translateY(-30px);
 }
@@ -157,7 +178,7 @@ button:active {
 .para-leave-to {
   opacity: 0;
   transform: translateY(-30px);
-}
+} */
 
 .fade-button-enter-from,
 .fade-button-leave-to {
