@@ -34,29 +34,39 @@ ul {
   margin: 10px 0;
   padding: 0;
 }
+
 li {
   border: 1px solid #ccc;
   padding: 1rem;
   margin: 10px 0;
   text-align: center;
 }
+
 .list-data-enter-from {
   opacity: 0;
   transform: translateX(-30px);
 }
+
 .list-data-enter-active {
   transition: all 1s ease-out;
 }
+
 .list-data-enter-to,
 .list-data-leave-from {
   opacity: 1;
   transform: translateX(0);
 }
+
 .list-data-leave-to {
   opacity: 0;
   transform: translateX(30px);
 }
+
 .list-data-leave-active {
   transition: all 1s ease-in;
+}
+
+.list-data-move {
+  transition: transform 0.8s ease;
 }
 </style>
